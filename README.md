@@ -2,10 +2,12 @@
 
 整合cyberdog_locomotion与cyberdog_simulator仓库，实现gazebo与ROS2环境下的四足机器人仿真，同时，提供了基于Riz2的可视化工具，将机器人的状态lcm数据转发为ROS2 topics
 
+详细信息可参照[**仿真平台文档**](https://miroboticslab.github.io/blogs/#/cn/cyberdog_gazebo_cn)
+
 推荐安装环境： Ubuntu 20.04 + ROS2 Galactic
 
-##### 依赖安装
-运行仿真平台需要安装如下的依赖 
+## 依赖安装
+运行仿真平台需要安装如下的依赖  
 **ros2_Galactic** 
 ```
 $ sudo apt update && sudo apt install curl gnupg lsb-release
@@ -50,10 +52,9 @@ $ sudo apt install ros-galactic-xacro
 $ git clone https://github.com/MiRoboticsLab/cyberdog_sim.git
 $ cd cyberdog_sim
 $ vcs import < cyberdog_sim.repos
-$ cd src/cyberdog_locomotion
-$ git submodule update --init --recursive
 ```
 ## 编译
+需要将src/cyberdog locomotion/CMakeLists.txt中的BUILD_ROS置为ON
 需要在cyberdog_sim文件夹下进行编译
 ```
 $ source /opt/ros/galactic/setup.bash 
@@ -61,11 +62,10 @@ $ colcon build --merge-install --symlink-install --packages-up-to cyberdog_locom
 ```
 
 ## 使用
-需要在cyberdog_sim文件夹下打开一个没有ros2环境的新终端
+需要在cyberdog_sim文件夹下运行
 ```
 $ python3 src/cyberdog_ros2/cyberdog_gazebo/script/launchsim.py
 ```
-注： 不要在ros2环境下运行，否则cyberdog_locomotion程序会出错
 
 ### 也可以通过以下命令分别运行各程序：
 
@@ -82,10 +82,11 @@ $ source install/setup.bash
 $ ros2 launch cyberdog_gazebo gazebo.launch.py use_lidar:=true
 ```
 
-然后启动cyberdog_locomotion devel分支的控制程序。打开cyberdog_sim文件夹新终端（无ros环境）
+然后启动cyberdog_locomotion devel分支的控制程序。打开cyberdog_sim文件夹新终端
 ```
-$ cd build/cyberdog_locomotion
-$ ./contol/user/mit_ctrl m s
+$ source /opt/ros/galactic/setup.bash
+$ source install/setup.bash
+$ ros2 launch cyberdog_gazebo cyberdog_control_launch.py
 ```
 
 最后打开可视化界面，于ros2_ws文件夹下进行如下操作：
