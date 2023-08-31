@@ -82,7 +82,7 @@ $ source install/setup.bash
 $ ros2 launch cyberdog_gazebo gazebo.launch.py use_lidar:=true
 ```
 
-然后启动cyberdog_locomotion devel分支的控制程序。打开cyberdog_sim文件夹新终端
+然后启动cyberdog_locomotion的控制程序。打开cyberdog_sim文件夹新终端
 ```
 $ source /opt/ros/galactic/setup.bash
 $ source install/setup.bash
