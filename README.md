@@ -64,7 +64,7 @@ $ colcon build --merge-install --symlink-install --packages-up-to cyberdog_locom
 ## 使用
 需要在cyberdog_sim文件夹下运行
 ```
-$ python3 src/cyberdog_ros2/cyberdog_gazebo/script/launchsim.py
+$ python3 src/cyberdog_simulator/cyberdog_gazebo/script/launchsim.py
 ```
 
 ### 也可以通过以下命令分别运行各程序：
